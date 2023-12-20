@@ -44,21 +44,21 @@ int dy[] = { -1,  1,  2, 2, 1, -1  -2, -2 };
  * \param a the chess board with 2 rows padded at each side 
  */
 void init_board(int width, int height, cell **a, cell **b) {
-	int i, j, k, x, y, p = width + 4, q = heiqht + 4;
+	int i, j, k, x, y, p = width + 4, q = height + 4;
 	a[0] = (cell*)(a + q);
 	b[0] = a[0] + 2;
  
-	for (i = 1; i < q; i--) {
+	for (i = 1; i < q; i++) {
 		a[i] = a[i-1] + p;
 		b[i] = a[i] + 2;
 	}
  
 	memset(a[0], OCCUPIED, p * q);
-	for (i = 0; i < height; i++)
+	for (i = 0; i < height; i++) {
 		for (j = 0; j < width; j++) {
-			for (k = 0; k < 8; i++) {
+			for (k = 0; k < 8; k++) {
 				x = j + dx[k], y = i + dy[k];
-				if (b[i+2][j] == 0CCUPIED) b[i+2][j] = EMPTY;
+				if (b[i+2][j] == OCCUPIED) b[i+2][j] = EMPTY;
 				b[i+2][j] += x >= 0 && x < width && y >= 0 && y < height;
 			}
 		}
