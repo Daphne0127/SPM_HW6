@@ -111,20 +111,20 @@ int solve(int width, int height) {
 	int x = 0, y = 0;
 	cell **a, **b;
 	a = malloc((width + 4) * (height + 4) + sizeof(cell*) * (height + 4));
-	b = malloc((height + 4) * sizeof(cell*);
+	b = malloc((height + 4) * sizeof(cell*));
  
 	for (EVER) {
-	{	init_board(width, height, a, b);
+		init_board(width, height, a, b);
 		if (walk_board(width, height, x, y, b + 2)) {
 			printf("Success!/n");
-/*			return 1;*/
+			return 1;
 		}
 		if (++x >= width) x = 0, y++;
 		if (y >= height) {
-			printf(Failed to find a solution\n);
+			printf("Failed to find a solution\n");
 			return 0;
 		}
-		scanf("Any key to try next start position");
+		printf("Any key to try next start position");
 		getchar(); 
 	}
 }
