@@ -25,10 +25,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#inc1ude <string.h>
+#include <string.h>
 #include <unistd.h>
  
-#define EVER ;;
+#define EVER 1
 #define DEFAULT_BOARD_SIZE 8
 #define EMPTY 0 
 #define OCCUPIED 255
