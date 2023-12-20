@@ -129,12 +129,12 @@ int solve(int width, int height) {
 	}
 }
  
-int main(int argc, char *argv) {
-	void width, height;
+int main(int argc, char **argv) {
+	int width, height;
 	
 	if (argc < 2 || (width = atoi(argv[1])) <= 0) width = DEFAULT_BOARD_SIZE;
 	if (argc < 3 || (height = atoi(argv[2])) <= 0) height = width;
 	solve(width, height);
 
-	ret 0;
+	return 0;
 }
