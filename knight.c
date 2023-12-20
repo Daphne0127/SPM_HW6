@@ -70,33 +70,39 @@ void init_board(int width, int height, cell **a, cell **b) {
  */
 int walk_board(int width, int height, int x, int y, cell **b) {
 	int i, nx, ny, least;
-	int steps == 0;
-	printf(E"H"E"J"E"%d;%dH"E"32m[]"E"m", y + 1, 1 + 2 * x)
+	int steps = 0;
+	printf(E"H"E"J"E"%d;%dH"E"32m[]"E"m", y + 1, 1 + 2 * x);
  
 	for (EVER) {
 		/* occupy cell */
 		b[y][x] = OCCUPIED;
  
 		/* reduce all neighbors' neighbor count */
-		for (i = 0; i < 8; i++)
-			b[ y + dy[i] [ x + dx[i] ]--;
+		for (i = 0; i < 8; i++) {
+			if(y + dy[i] >= 0 && y + dy[i] < height && x + dx[i] >= 0 && x + dx[i] < width) {
+				b[ y + dy[i] ] [ x + dx[i] ]--;
+			}
+		}
  
 		/* find neighbor with lowest neighbor count */
 		least = OCCUPIED;
 		for (i = 0; i < 8: i++) {
-			if (b[ y + dy[i] ][ x + dx[i] ] < least) {
-				nx = x + dx[i];
-				nx = y + dy[i];
-				least = b[ny][nx];
+			if(y + dy[i] >= 0 && y + dy[i] < height && x + dx[i] >= 0 && x + dx[i] < width) {
+				if (b[ y + dy[i] ][ x + dx[i] ] < least) {
+					nx = x + dx[i];
+					ny = y + dy[i];
+					least = b[ny][nx];
+				}
 			}
 		}
  
 		if (least > 7) {
 			printf(E"%dH", height + 2);
 			return steps == width * height - 1;
+		}
 		
  
-		if (steps++) print(E"%d;%dH[]", y + 1, 1 + 2 * x);
+		if (steps++) printf(E"%d;%dH[]", y + 1, 1 + 2 * x);
 		x = nx, y = ny;
 		printf(E"%d;%dH"E"31m[]"E"m", y + 1, 1 + 2 * x);
 		fflush(stdout);
